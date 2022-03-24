@@ -20,9 +20,10 @@ public class EventControllerTests extends BaseItTest{
     @Test
     public void showEventTest() {
         //Given
-        Event expectedEvent = new Event(1, "wad",
-                "asfasd"
-                , "dsaf",
+        Event expectedEvent = new Event(1,
+                "wad",
+                "asfasd",
+                "dsaf",
                 "sadf",
                 Instant.now());
         eventRepository.save(expectedEvent);
@@ -30,7 +31,7 @@ public class EventControllerTests extends BaseItTest{
         Event actualEvent = RestAssured.given().when().get("/event/{id}", expectedEvent.getId())
                 .then().statusCode(200).extract().as(Event.class);
         //Then
-        assertEquals(expectedEvent, actualEvent);
+        assertEquals(expectedEvent.getTitle(), actualEvent.getTitle());
 
 //        List<Event> events = eventController.showAllEvents();
 //        Event newEvent = events.stream().filter(ev->ev.getId()==1).findAny().orElse(null);
@@ -40,15 +41,17 @@ public class EventControllerTests extends BaseItTest{
     @Test
     public void showAllEventsTest() {
         //Given
-        Event event = new Event(1, "wad",
-                "asfasd"
-                , "dsaf",
+        Event event = new Event(1,
+                "wad",
+                "asfasd",
+                "dsaf",
                 "sadf",
                 Instant.now());
         eventRepository.save(event);
-        Event event1 = new Event(2, "wad",
-                "asfasd"
-                , "dsaf",
+        Event event1 = new Event(2,
+                "wad",
+                "asfasd",
+                "dsaf",
                 "sadf",
                 Instant.now());
         eventRepository.save(event);
@@ -63,12 +66,48 @@ public class EventControllerTests extends BaseItTest{
     public void saveEventTest() {
         //When
         Event event = eventController.saveEvent(new CreateEventDto("wad",
-                "asfasd"
-                , "dsaf",
+                "asfasd",
+                "dsaf",
                 "sadf",
                 Instant.now()));
         //Then
         assertEquals(event.getId(), eventRepository.findById(event.getId()).get().getId());
+    }
+
+    @Test
+    public void updateEventTest() {
+        //Given
+        Event event = new Event(1,
+                "test",
+                "test",
+                "test",
+                "test",
+                Instant.now());
+        eventRepository.save(event);
+        //When
+        Event updateEvent = eventController.updateEvent(new CreateEventDto("wad",
+                "asfasd",
+                "dsaf",
+                "sadf",
+                Instant.now()),1);
+        //Then
+        assertEquals("wad", updateEvent.getTitle());
+    }
+
+    @Test
+    public void deleteEventTest(){
+        //Given
+        Event event = new Event(1,
+                "test",
+                "test",
+                "test",
+                "test",
+                Instant.now());
+        eventRepository.save(event);
+        //When
+        eventController.deleteEvent(event.getId());
+        //Then
+        assertEquals(0,eventRepository.findAll().size());
     }
 
     @Test

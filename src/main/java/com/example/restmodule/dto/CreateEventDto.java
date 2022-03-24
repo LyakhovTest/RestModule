@@ -3,7 +3,6 @@ package com.example.restmodule.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.Instant;
 

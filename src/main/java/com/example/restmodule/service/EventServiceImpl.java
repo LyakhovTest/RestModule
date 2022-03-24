@@ -16,7 +16,7 @@ public class EventServiceImpl implements EventService{
     private final EventRepository eventRepository;
 
     @Override
-    public Event createEvent( CreateEventDto eventDto) {
+    public Event createEvent(CreateEventDto eventDto) {
         Event event = Event.builder()
                 .eventType(eventDto.getEventType())
                 .dateTime(eventDto.getDateTime())

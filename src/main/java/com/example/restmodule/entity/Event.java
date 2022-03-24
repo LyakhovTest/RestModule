@@ -4,11 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.time.Instant;
-import java.util.Date;
-import java.util.Objects;
 
 @Entity
 @Table(name="event")
@@ -31,17 +28,4 @@ public class Event {
     private String eventType;
     @Column(name = "date_time")
     private Instant dateTime;
-
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Event event = (Event) o;
-//        return Objects.equals(id, event.id) && Objects.equals(title, event.title) && Objects.equals(place, event.place) && Objects.equals(speaker, event.speaker) && Objects.equals(eventType, event.eventType);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id, title, place, speaker, eventType);
-//    }
 }
