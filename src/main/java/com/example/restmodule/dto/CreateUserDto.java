@@ -9,4 +9,5 @@ import java.time.Instant;
 public class CreateUserDto {
         private String name;
         private String email;
+        private int account;
 }

@@ -40,7 +40,8 @@ public class MockDbTest {
                 "asfasd"
                 , "dsaf",
                 "sadf",
-                Instant.now()));
+                Instant.now(),
+                null));
         System.out.println(event);
     }
 }

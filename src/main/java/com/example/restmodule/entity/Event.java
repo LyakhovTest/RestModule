@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.List;
 
 @Entity
 @Table(name="event")
@@ -28,4 +29,8 @@ public class Event {
     private String eventType;
     @Column(name = "date_time")
     private Instant dateTime;
+
+    @OneToMany
+    @JoinColumn(name = "event_id")
+    private List<Ticket> tickets;
 }

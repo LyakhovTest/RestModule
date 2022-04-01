@@ -5,6 +5,7 @@ import com.example.restmodule.entity.Event;
 import com.example.restmodule.repository.EventRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +17,7 @@ public class EventServiceImpl implements EventService{
     private final EventRepository eventRepository;
 
     @Override
+    @Transactional
     public Event createEvent(CreateEventDto eventDto) {
         Event event = Event.builder()
                 .eventType(eventDto.getEventType())
@@ -28,6 +30,7 @@ public class EventServiceImpl implements EventService{
     }
 
     @Override
+    @Transactional
     public Event updateEvent(CreateEventDto eventDto, int id) {
         Event event = Event.builder()
                 .id(id)
@@ -41,6 +44,7 @@ public class EventServiceImpl implements EventService{
     }
 
     @Override
+    @Transactional
     public Event getEvent(int id) {
         Event event = null;
         Optional<Event> ev = eventRepository.findById(id);
@@ -62,7 +66,6 @@ public class EventServiceImpl implements EventService{
 
     @Override
     public List<Event> getAllEventsByTitle(String title) {
-       // return eventRepository.find;
         return eventRepository.findAllByTitle(title);
     }
 }

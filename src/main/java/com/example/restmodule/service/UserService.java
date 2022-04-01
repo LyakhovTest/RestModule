@@ -13,4 +13,6 @@ public interface UserService {
     User getUser(int id);
     void deleteUser(int id);
     List<User> getAllUser();
+    User addMoney(int id, int sum);
+    void spendMoney(int id, int sum);
 }

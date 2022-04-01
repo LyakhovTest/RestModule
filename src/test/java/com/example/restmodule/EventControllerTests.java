@@ -25,7 +25,8 @@ public class EventControllerTests extends BaseItTest{
                 "asfasd",
                 "dsaf",
                 "sadf",
-                Instant.now());
+                Instant.now(),
+                null);
         eventRepository.save(expectedEvent);
         //When
         Event actualEvent = RestAssured.given().when().get("/event/{id}", expectedEvent.getId())
@@ -46,14 +47,16 @@ public class EventControllerTests extends BaseItTest{
                 "asfasd",
                 "dsaf",
                 "sadf",
-                Instant.now());
+                Instant.now(),
+                null);
         eventRepository.save(event);
         Event event1 = new Event(2,
                 "wad",
                 "asfasd",
                 "dsaf",
                 "sadf",
-                Instant.now());
+                Instant.now(),
+                null);
         eventRepository.save(event);
         eventRepository.save(event1);
         //When
@@ -82,7 +85,8 @@ public class EventControllerTests extends BaseItTest{
                 "test",
                 "test",
                 "test",
-                Instant.now());
+                Instant.now(),
+                null);
         eventRepository.save(event);
         //When
         Event updateEvent = eventController.updateEvent(new CreateEventDto("wad",
@@ -102,7 +106,8 @@ public class EventControllerTests extends BaseItTest{
                 "test",
                 "test",
                 "test",
-                Instant.now());
+                Instant.now(),
+                null);
         eventRepository.save(event);
         //When
         eventController.deleteEvent(event.getId());
@@ -118,7 +123,8 @@ public class EventControllerTests extends BaseItTest{
                 "asfasd",
                 "dsaf",
                 "sadf",
-                Instant.now());
+                Instant.now(),
+                null);
         eventRepository.save(event1);
 
         Event event2 = new Event(null,
@@ -126,7 +132,8 @@ public class EventControllerTests extends BaseItTest{
                 "test",
                 "test",
                 "test",
-                Instant.now());
+                Instant.now(),
+                null);
         eventRepository.save(event2);
 
         Event event3 = new Event(null,
@@ -134,7 +141,8 @@ public class EventControllerTests extends BaseItTest{
                 "test",
                 "test",
                 "test",
-                Instant.now());
+                Instant.now(),
+                null);
         eventRepository.save(event3);
         //When
         List<Event> events = eventController.getAllEventsByTitle(event1.getTitle());

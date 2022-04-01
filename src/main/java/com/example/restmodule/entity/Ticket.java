@@ -14,22 +14,24 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 public class Ticket {
-    public enum Category {STANDARD, PREMIUM, BAR}
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @Column(name="eventId")
-    private long eventId;
+    @Column(name="event_id")
+    private Integer eventId;
 
-    @Column(name="userId")
-    private long userId;
+    @Column(name="user_id")
+    private Integer userId;
 
     @Column(name="cateory")
+    @Enumerated(EnumType.STRING)
     private Category category;
 
     @Column(name="place")
     private int place;
+
+    @Column(name="cost")
+    private int cost;
 }

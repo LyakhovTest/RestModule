@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="user")
@@ -24,4 +25,11 @@ public class User {
 
     @Column(name="email")
     private String email;
+
+    @Column(name="account")
+    private int account;
+
+//    @OneToMany
+//    @JoinColumn(name = "id")
+//    private List<Ticket> tickets;
 }
